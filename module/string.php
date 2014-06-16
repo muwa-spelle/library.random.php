@@ -25,13 +25,9 @@
 				{
 					{
 						$string = self::string_build($numeric, $lowercase, $uppercase, $string);
-						if(!empty($string)){
-							$string_length = mb_strlen($string, $encode);
+						if(($string_length = mb_strlen($string, $encode)) > 0){
 							for($i = 0; $i < $string_length; $i++){
-								$char = mb_substr($string, $i, 1, $encode);
-								if(!isset($result_tmp[$char])){
-									$result_tmp[$char] = '';
-								}
+								$result_tmp[$char = mb_substr($string, $i, 1, $encode)] = '';
 							}
 						}
 					}
@@ -141,8 +137,8 @@
 					
 					{
 						$string = $this->getString($parameter_execute['numeric'], $parameter_execute['lowercase'], $parameter_execute['uppercase'], $parameter_execute['string'], $parameter_execute['encode']);
-						if(!empty($string)){
-							$string_length = mb_strlen($string, $parameter_execute['encode']) - 1;
+						if(($string_length = mb_strlen($string, $parameter_execute['encode'])) > 0){
+							$string_length--;
 							for($i = 0; $i < $parameter_execute['length']; $i++){
 								$result .= mb_substr($string, rand(0, $string_length), 1, $parameter_execute['encode']);
 							}
