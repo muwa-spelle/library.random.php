@@ -125,7 +125,7 @@
 							}
 							
 							if(array_key_exists('length', $parameter)){
-								$parameter_execute['length'] = $parameter['length'];
+								$parameter_execute['length'] = intval($parameter['length']);
 							}
 						}
 						
